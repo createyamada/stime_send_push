@@ -1,0 +1,17 @@
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  worker:
+    build:
+      context: ./app
+    command: rq worker -c settings
+    depends_on:
+      - redis
+
+volumes:
+  redis_data:

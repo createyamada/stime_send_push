@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+google-auth
+python-dotenv
+firebase-admin
+redis
+rq
