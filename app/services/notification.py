@@ -9,9 +9,9 @@ def get_mutual_users(user_data: dict):
 
 def notify_if_needed(user_id: str, user_data: dict):
     mutuals = get_mutual_users(user_data)
-    for uid in mutuals:
-        if is_notification_enabled(user_id, uid):
-            token = get_fcm_token(uid)
+    for send_user_id in mutuals:
+        if is_notification_enabled(user_id, send_user_id):
+            token = get_fcm_token(send_user_id)
             if token:
                 enqueue_fcm(
                     token,
