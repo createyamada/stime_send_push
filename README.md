@@ -1,8 +1,32 @@
+# ssh接続設定（VPC）コンソールにて実行
+```
+// ファイアウォールの設定
+$ sudo firewall-cmd --permanent --add-port=22/tcp
+$ sudo firewall-cmd --reload
+$ sudo systemctl restart firewalld
+
+
+// サービス起動確認
+$ sudo systemctl status sshd
+
+// activeでない場合
+$ sudo systemctl start sshd
+$ sudo systemctl enable sshd
+
+// sshポートの確認
+$ grep Port /etc/ssh/sshd_config
+
+// 22でない場合
+$ ssh -p <ポート番号> root@[IPアドレス]
+```
+
 
 # CentOSユーザ作成
 ```
+// 前提rootユーザでのログイン
 $ useradd [利用ユーザ名]
-$ [パスワード] [利用ユーザ名]
+$ passwd [利用ユーザ名]
+// プロンプトに従ってパスワードを設定
 ```
 
 # ユーザをwheelグループに追加する
